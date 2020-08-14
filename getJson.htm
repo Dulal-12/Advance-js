@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ol id = "user-information">
+
+    </ol>
+    <script>
+        fetch('https://jsonplaceholder.typicode.com/users')
+        .then(response => response.json())
+        .then(data => displayUser(data))
+
+       function  displayUser(data){
+           const name = data.map(x => x.name);
+           const ol = document.getElementById("user-information");
+           for(let value of name){
+               const li = document.createElement('li');
+               li.innerText = value;
+               ol.appendChild(li);
+           }
+       }
+
+    </script>
+</body>
+</html>
